@@ -8,6 +8,7 @@ package tshirtalgorithms;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import sorting.QuickSort;
 import tshirtalgorithms.models.Color;
 import tshirtalgorithms.models.Fabric;
 import tshirtalgorithms.models.Size;
@@ -23,19 +24,31 @@ public class TShirtAlgorithms {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        List<TShirt> tShirts = generateTShirts(40);
-        for (TShirt tShirt : tShirts) {
-            System.out.println(tShirt);
-        }
+        int high = 6;
+        List<TShirt> tShirts = generateTShirts(high + 1);
+        System.out.println("Unsorted array");
+        System.out.println("--------------");
+        printTShirts(tShirts);
+        
+        QuickSort qs = new QuickSort();
+        List<TShirt> qsSortedBySizeASC = new ArrayList<TShirt>(tShirts);
+        qsSortedBySizeASC = qs.sort(qsSortedBySizeASC, 0, high, (byte)0);
+        System.out.println("\nSorted array By Size ASC");
+        System.out.println("--------------");
+        printTShirts(qsSortedBySizeASC);
+        
+        List<TShirt> qsSortedBySizeDESC = new ArrayList<TShirt>(tShirts);
+        qsSortedBySizeASC = qs.sort(qsSortedBySizeDESC, 0, high, (byte)1);
+        System.out.println("\nSorted array By Size DESC");
+        System.out.println("--------------");
+        printTShirts(qsSortedBySizeDESC);
     }
     
     public static List<TShirt> generateTShirts(int count) {
         List<TShirt> tShirts = new ArrayList<TShirt>();
         for(int i = 0; i < count; i++) {
             int k = generateNumber();
-            Color c = (Color)generateRandomField(0);
             TShirt e = new TShirt((Color)generateRandomField(0),(Fabric)generateRandomField(1),(Size)generateRandomField(2));
-            
             tShirts.add(e);
         }
         return tShirts;
@@ -54,12 +67,19 @@ public class TShirtAlgorithms {
             case 2:
                 Size s = Size.values()[k];
                 return s;
+            default:
+                return 0;
         }
-        return 0;
     }
     
     private static int generateNumber() {
         Random random = new Random();
         return random.nextInt(7);
+    }
+    
+    public static void printTShirts(List<TShirt> tShirts) {
+        for (TShirt tShirt : tShirts) {
+            System.out.println(tShirt);
+        }
     }
 }
