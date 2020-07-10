@@ -26,6 +26,32 @@ public class TShirt {
         
     }
 
+    public Color getC() {
+        return c;
+    }
+
+    public void setC(Color c) {
+        this.c = c;
+    }
+
+    public Fabric getF() {
+        return f;
+    }
+
+    public void setF(Fabric f) {
+        this.f = f;
+    }
+
+    public Size getS() {
+        return s;
+    }
+
+    public void setS(Size s) {
+        this.s = s;
+    }
+    
+    
+
     @Override
     public String toString() {
         return "TShirt{" + "c=" + c + ", f=" + f + ", s=" + s + '}';
