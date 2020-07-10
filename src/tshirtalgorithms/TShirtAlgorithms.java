@@ -48,18 +48,31 @@ public class TShirtAlgorithms {
 //        System.out.println("--------------");
 //        printTShirts(qsSortedBySizeDESC);
 
+//        QuickSort qs = new QuickSort();
+//        List<TShirt> qsSortedByColorASC = new ArrayList<TShirt>(tShirts);
+//        qsSortedByColorASC = qs.sort(qsSortedByColorASC, 0, high, (byte)0, (byte)1);
+//        System.out.println("\nSorted array By Color ASC");
+//        System.out.println("--------------");
+//        printTShirts(qsSortedByColorASC);
+//        
+//        List<TShirt> qsSortedByColorDESC = new ArrayList<TShirt>(tShirts);
+//        qsSortedByColorDESC = qs.sort(qsSortedByColorDESC, 0, high, (byte)1, (byte)1);
+//        System.out.println("\nSorted array By Color DESC");
+//        System.out.println("--------------");
+//        printTShirts(qsSortedByColorDESC);
+
         QuickSort qs = new QuickSort();
-        List<TShirt> qsSortedByColorASC = new ArrayList<TShirt>(tShirts);
-        qsSortedByColorASC = qs.sort(qsSortedByColorASC, 0, high, (byte)0, (byte)1);
-        System.out.println("\nSorted array By Color ASC");
+        List<TShirt> qsSortedByFabricASC = new ArrayList<TShirt>(tShirts);
+        qsSortedByFabricASC = qs.sort(qsSortedByFabricASC, 0, high, (byte)0, (byte)2);
+        System.out.println("\nSorted array By Fabric ASC");
         System.out.println("--------------");
-        printTShirts(qsSortedByColorASC);
+        printTShirts(qsSortedByFabricASC);
         
-        List<TShirt> qsSortedByColorDESC = new ArrayList<TShirt>(tShirts);
-        qsSortedByColorDESC = qs.sort(qsSortedByColorDESC, 0, high, (byte)1, (byte)1);
-        System.out.println("\nSorted array By Color DESC");
+        List<TShirt> qsSortedByFabricDESC = new ArrayList<TShirt>(tShirts);
+        qsSortedByFabricDESC = qs.sort(qsSortedByFabricDESC, 0, high, (byte)1, (byte)2);
+        System.out.println("\nSorted array By Fabric DESC");
         System.out.println("--------------");
-        printTShirts(qsSortedByColorDESC);
+        printTShirts(qsSortedByFabricDESC);
     }
     
     public static List<TShirt> generateTShirts(int count) {
