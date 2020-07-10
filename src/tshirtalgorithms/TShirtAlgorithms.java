@@ -24,24 +24,42 @@ public class TShirtAlgorithms {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        // type = 0, SIZE
+        // type = 1, COLOR
+        // type = 2, FABRIC
+        
+        
         int high = 6;
         List<TShirt> tShirts = generateTShirts(high + 1);
         System.out.println("Unsorted array");
         System.out.println("--------------");
         printTShirts(tShirts);
         
+//        QuickSort qs = new QuickSort();
+//        List<TShirt> qsSortedBySizeASC = new ArrayList<TShirt>(tShirts);
+//        qsSortedBySizeASC = qs.sort(qsSortedBySizeASC, 0, high, (byte)0, (byte)0);
+//        System.out.println("\nSorted array By Size ASC");
+//        System.out.println("--------------");
+//        printTShirts(qsSortedBySizeASC);
+//        
+//        List<TShirt> qsSortedBySizeDESC = new ArrayList<TShirt>(tShirts);
+//        qsSortedBySizeASC = qs.sort(qsSortedBySizeDESC, 0, high, (byte)1, (byte)0);
+//        System.out.println("\nSorted array By Size DESC");
+//        System.out.println("--------------");
+//        printTShirts(qsSortedBySizeDESC);
+
         QuickSort qs = new QuickSort();
-        List<TShirt> qsSortedBySizeASC = new ArrayList<TShirt>(tShirts);
-        qsSortedBySizeASC = qs.sort(qsSortedBySizeASC, 0, high, (byte)0);
-        System.out.println("\nSorted array By Size ASC");
+        List<TShirt> qsSortedByColorASC = new ArrayList<TShirt>(tShirts);
+        qsSortedByColorASC = qs.sort(qsSortedByColorASC, 0, high, (byte)0, (byte)1);
+        System.out.println("\nSorted array By Color ASC");
         System.out.println("--------------");
-        printTShirts(qsSortedBySizeASC);
+        printTShirts(qsSortedByColorASC);
         
-        List<TShirt> qsSortedBySizeDESC = new ArrayList<TShirt>(tShirts);
-        qsSortedBySizeASC = qs.sort(qsSortedBySizeDESC, 0, high, (byte)1);
-        System.out.println("\nSorted array By Size DESC");
+        List<TShirt> qsSortedByColorDESC = new ArrayList<TShirt>(tShirts);
+        qsSortedByColorDESC = qs.sort(qsSortedByColorDESC, 0, high, (byte)1, (byte)1);
+        System.out.println("\nSorted array By Color DESC");
         System.out.println("--------------");
-        printTShirts(qsSortedBySizeDESC);
+        printTShirts(qsSortedByColorDESC);
     }
     
     public static List<TShirt> generateTShirts(int count) {
