@@ -14,12 +14,14 @@ import tshirtalgorithms.models.TShirt;
  */
 // https://www.geeksforgeeks.org/bubble-sort/
 public class BubbleSort {
+    // order = 0, ASC
+    // order = 1, DESC
+    
     // type = 0, SIZE
     // type = 1, COLOR
     // type = 2, FABRIC
     
-    // order = 0, ASC
-    // order = 1, DESC
+    
     public List<TShirt> sort(List<TShirt> arr, int n, byte order, byte type) 
     { 
         int i, j, temp; 

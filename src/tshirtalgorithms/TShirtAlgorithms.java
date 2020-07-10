@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import sorting.BubbleSort;
+import sorting.BucketSort;
 import sorting.QuickSort;
 import tshirtalgorithms.models.Color;
 import tshirtalgorithms.models.Fabric;
@@ -32,23 +33,19 @@ public class TShirtAlgorithms {
         // type = 1, COLOR
         // type = 2, FABRIC
         int high = 6;
-        List<TShirt> tShirts = generateTShirts(high + 1);
+        List<TShirt> tShirts = generateTShirts(10);
         System.out.println("Unsorted array");
         System.out.println("--------------");
         printTShirts(tShirts);
         
 //        doQuickSort(tShirts,high);
-        doBubbleSort(tShirts);
+//        doBubbleSort(tShirts);
         
-        
-        
-        
-        
-        
-//        
-        
-        
-        
+        BucketSort bus = new BucketSort();
+        List<TShirt>  busSortedBySizeASC = bus.sort(tShirts, 7, (byte)0, (byte)0);
+        System.out.println("\nSorted array By Size ASC");
+        System.out.println("--------------");
+        printTShirts(busSortedBySizeASC);
     }
     
     public static void doQuickSort(List<TShirt> tShirts, int high) {
