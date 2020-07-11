@@ -73,9 +73,10 @@ public class BucketSort {
         List<TShirt> result = new ArrayList<>();
         // merge all buckets into a List<TShirt> sorted
         for (List<TShirt> bucket : buckets) { // iterate on every bucket
-            for (TShirt tShirt : bucket) { // iterate List TShirt on each bucket
+            bucket.forEach((tShirt) -> {
+                // iterate List TShirt on each bucket
                 result.add(tShirt);
-            }
+            });
         }
         return(result);
     }
