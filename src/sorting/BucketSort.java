@@ -26,7 +26,12 @@ public class BucketSort {
     
     
     public List<TShirt> sort(List<TShirt> arr, int noOfBuckets, byte order, byte type) {
-        List<TShirt>[] buckets = new ArrayList[noOfBuckets+1];
+        List<TShirt>[] buckets = new List[noOfBuckets+1];
+        // initialiaze each position of the array with a LinkedList
+        for(int i = 0; i <= noOfBuckets; i++){
+            buckets[i] = new LinkedList<>();
+        }
+        // place the TShirts on the appropriate bucket
         for (TShirt tShirt : arr) {
             switch(order) {
                 // ASC
@@ -66,6 +71,7 @@ public class BucketSort {
             }
         }
         List<TShirt> result = new ArrayList<>();
+        // merge all buckets into a List<TShirt> sorted
         for (List<TShirt> bucket : buckets) { // iterate on every bucket
             for (TShirt tShirt : bucket) { // iterate List TShirt on each bucket
                 result.add(tShirt);

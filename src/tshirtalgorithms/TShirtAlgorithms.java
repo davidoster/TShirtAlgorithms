@@ -32,99 +32,180 @@ public class TShirtAlgorithms {
         // type = 0, SIZE
         // type = 1, COLOR
         // type = 2, FABRIC
-        int high = 6;
-        List<TShirt> tShirts = generateTShirts(10);
-        System.out.println("Unsorted array");
-        System.out.println("--------------");
-        printTShirts(tShirts);
+        boolean display = false;
+        int high = 4000;
+        List<TShirt> tShirts = generateTShirts(high+1);
+        if(display) {
+            System.out.println("Unsorted array");
+            System.out.println("--------------");
+            printTShirts(tShirts);
+        }
         
-//        doQuickSort(tShirts,high);
-//        doBubbleSort(tShirts);
+        doQuickSort(tShirts, high, display);
+        doBubbleSort(tShirts, display);
+        doBucketSort(tShirts, high, display);
         
-        BucketSort bus = new BucketSort();
-        List<TShirt>  busSortedBySizeASC = bus.sort(tShirts, 7, (byte)0, (byte)0);
-        System.out.println("\nSorted array By Size ASC");
-        System.out.println("--------------");
-        printTShirts(busSortedBySizeASC);
+        
     }
     
-    public static void doQuickSort(List<TShirt> tShirts, int high) {
+    public static void doQuickSort(List<TShirt> tShirts, int high, boolean display) {
+        TimePerformance timePerformance;
+        long lapse = 0;
         QuickSort qs = new QuickSort();
         List<TShirt> qsSortedBySizeASC = new ArrayList<TShirt>(tShirts);
+        timePerformance = new TimePerformance();
         qsSortedBySizeASC = qs.sort(qsSortedBySizeASC, 0, high, (byte)0, (byte)0);
-        System.out.println("\nSorted array By Size ASC");
+        lapse = timePerformance.timeLapse();
+        System.out.println("\n---QuickSort---\n");
+        System.out.println("\nSorted array By Size ASC - Time: " + lapse);
         System.out.println("--------------");
-        printTShirts(qsSortedBySizeASC);
+        if(display) printTShirts(qsSortedBySizeASC);
         
         List<TShirt> qsSortedBySizeDESC = new ArrayList<TShirt>(tShirts);
+        timePerformance = new TimePerformance();
         qsSortedBySizeASC = qs.sort(qsSortedBySizeDESC, 0, high, (byte)1, (byte)0);
-        System.out.println("\nSorted array By Size DESC");
+        lapse = timePerformance.timeLapse();
+        System.out.println("\nSorted array By Size DESC - Time: " + lapse);
         System.out.println("--------------");
-        printTShirts(qsSortedBySizeDESC);
+        if(display) printTShirts(qsSortedBySizeDESC);
       
         List<TShirt> qsSortedByColorASC = new ArrayList<TShirt>(tShirts);
+        timePerformance = new TimePerformance();
         qsSortedByColorASC = qs.sort(qsSortedByColorASC, 0, high, (byte)0, (byte)1);
-        System.out.println("\nSorted array By Color ASC");
+        lapse = timePerformance.timeLapse();
+        System.out.println("\nSorted array By Color ASC - Time: " + lapse);
         System.out.println("--------------");
-        printTShirts(qsSortedByColorASC);
+        if(display) printTShirts(qsSortedByColorASC);
         
         List<TShirt> qsSortedByColorDESC = new ArrayList<TShirt>(tShirts);
+        timePerformance = new TimePerformance();
         qsSortedByColorDESC = qs.sort(qsSortedByColorDESC, 0, high, (byte)1, (byte)1);
-        System.out.println("\nSorted array By Color DESC");
+        lapse = timePerformance.timeLapse();
+        System.out.println("\nSorted array By Color DESC - Time: " + lapse);
         System.out.println("--------------");
-        printTShirts(qsSortedByColorDESC);
+        if(display) printTShirts(qsSortedByColorDESC);
 
         List<TShirt> qsSortedByFabricASC = new ArrayList<TShirt>(tShirts);
+        timePerformance = new TimePerformance();
         qsSortedByFabricASC = qs.sort(qsSortedByFabricASC, 0, high, (byte)0, (byte)2);
-        System.out.println("\nSorted array By Fabric ASC");
+        lapse = timePerformance.timeLapse();
+        System.out.println("\nSorted array By Fabric ASC - Time: " + lapse);
         System.out.println("--------------");
-        printTShirts(qsSortedByFabricASC);
+        if(display) printTShirts(qsSortedByFabricASC);
         
         List<TShirt> qsSortedByFabricDESC = new ArrayList<TShirt>(tShirts);
+        timePerformance = new TimePerformance();
         qsSortedByFabricDESC = qs.sort(qsSortedByFabricDESC, 0, high, (byte)1, (byte)2);
-        System.out.println("\nSorted array By Fabric DESC");
+        lapse = timePerformance.timeLapse();
+        System.out.println("\nSorted array By Fabric DESC - Time: " + lapse);
         System.out.println("--------------");
-        printTShirts(qsSortedByFabricDESC);
+        if(display) printTShirts(qsSortedByFabricDESC);
+        System.out.println("\n---QuickSort---\n");
         
     }
     
-    public static void doBubbleSort(List<TShirt> tShirts) {
+    public static void doBubbleSort(List<TShirt> tShirts, boolean display) {
+        TimePerformance timePerformance;
+        long lapse = 0;
         BubbleSort bs  = new BubbleSort();
         List<TShirt> bsSortedBySizeASC = new ArrayList<TShirt>(tShirts);
+        timePerformance = new TimePerformance();
         bsSortedBySizeASC = bs.sort(bsSortedBySizeASC, tShirts.size(), (byte)0, (byte)0);
-        System.out.println("\nSorted array By Size ASC");
+        lapse = timePerformance.timeLapse();
+        System.out.println("\n---BubbleSort---\n");
+        System.out.println("\nSorted array By Size ASC - Time : " + lapse);
         System.out.println("--------------");
-        printTShirts(bsSortedBySizeASC);
+        if(display) printTShirts(bsSortedBySizeASC);
         
         List<TShirt> bsSortedBySizeDESC = new ArrayList<TShirt>(tShirts);
+        timePerformance = new TimePerformance();
         bsSortedBySizeDESC = bs.sort(bsSortedBySizeDESC, tShirts.size(), (byte)1, (byte)0);
-        System.out.println("\nSorted array By Size DESC");
+        lapse = timePerformance.timeLapse();
+        System.out.println("\nSorted array By Size DESC - Time : " + lapse);
         System.out.println("--------------");
-        printTShirts(bsSortedBySizeDESC);
+        if(display) printTShirts(bsSortedBySizeDESC);
         
         List<TShirt> bsSortedByColorASC = new ArrayList<TShirt>(tShirts);
+        timePerformance = new TimePerformance();
         bsSortedByColorASC = bs.sort(bsSortedByColorASC, tShirts.size(), (byte)0, (byte)1);
-        System.out.println("\nSorted array By Color ASC");
+        lapse = timePerformance.timeLapse();
+        System.out.println("\nSorted array By Color ASC - Time : " + lapse);
         System.out.println("--------------");
-        printTShirts(bsSortedByColorASC);
+        if(display) printTShirts(bsSortedByColorASC);
         
         List<TShirt> bsSortedByColorDESC = new ArrayList<TShirt>(tShirts);
+        timePerformance = new TimePerformance();
         bsSortedByColorDESC = bs.sort(bsSortedByColorDESC, tShirts.size(), (byte)1, (byte)1);
-        System.out.println("\nSorted array By Color DESC");
+        lapse = timePerformance.timeLapse();
+        System.out.println("\nSorted array By Color DESC - Time : " + lapse);
         System.out.println("--------------");
-        printTShirts(bsSortedByColorDESC);
+        if(display) printTShirts(bsSortedByColorDESC);
         
         List<TShirt> bsSortedByFabricASC = new ArrayList<TShirt>(tShirts);
+        timePerformance = new TimePerformance();
         bsSortedByFabricASC = bs.sort(bsSortedByFabricASC, tShirts.size(), (byte)0, (byte)2);
-        System.out.println("\nSorted array By Fabric ASC");
+        lapse = timePerformance.timeLapse();
+        System.out.println("\nSorted array By Fabric ASC - Time : " + lapse);
         System.out.println("--------------");
-        printTShirts(bsSortedByFabricASC);
+        if(display) printTShirts(bsSortedByFabricASC);
         
         List<TShirt> bsSortedByFabricDESC = new ArrayList<TShirt>(tShirts);
+        timePerformance = new TimePerformance();
         bsSortedByFabricDESC = bs.sort(bsSortedByFabricDESC, tShirts.size(), (byte)1, (byte)2);
-        System.out.println("\nSorted array By Fabric DESC");
+        lapse = timePerformance.timeLapse();
+        System.out.println("\nSorted array By Fabric DESC - Time : " + lapse);
         System.out.println("--------------");
-        printTShirts(bsSortedByFabricDESC);
+        if(display) printTShirts(bsSortedByFabricDESC);
+        System.out.println("\n---BubbleSort---\n");
+    }
+    
+    public static void doBucketSort(List<TShirt> tShirts, int high, boolean display) {
+        TimePerformance timePerformance;
+        long lapse = 0;
+        BucketSort bus = new BucketSort();
+        timePerformance = new TimePerformance();
+        List<TShirt>  busSortedBySizeASC = bus.sort(tShirts, high, (byte)0, (byte)0);
+        lapse = timePerformance.timeLapse();
+        System.out.println("\n---BucketSort---\n");
+        System.out.println("\nSorted array By Size ASC - Time : " + lapse);
+        System.out.println("--------------");
+        if(display) printTShirts(busSortedBySizeASC);
+        
+        timePerformance = new TimePerformance();
+        List<TShirt>  busSortedBySizeDESC = bus.sort(tShirts, high, (byte)1, (byte)0);
+        lapse = timePerformance.timeLapse();
+        System.out.println("\nSorted array By Size DESC - Time : " + lapse);
+        System.out.println("--------------");
+        if(display) printTShirts(busSortedBySizeDESC);
+        
+        timePerformance = new TimePerformance();
+        List<TShirt>  busSortedByColorASC = bus.sort(tShirts, high, (byte)0, (byte)1);
+        lapse = timePerformance.timeLapse();
+        System.out.println("\nSorted array By Color ASC - Time : " + lapse);
+        System.out.println("--------------");
+        if(display) printTShirts(busSortedByColorASC);
+        
+        timePerformance = new TimePerformance();
+        List<TShirt>  busSortedByColorDESC = bus.sort(tShirts, high, (byte)1, (byte)1);
+        lapse = timePerformance.timeLapse();
+        System.out.println("\nSorted array By Color DESC - Time : " + lapse);
+        System.out.println("--------------");
+        if(display) printTShirts(busSortedByColorDESC);
+        
+        timePerformance = new TimePerformance();
+        List<TShirt>  busSortedByFabricASC = bus.sort(tShirts, high, (byte)0, (byte)2);
+        lapse = timePerformance.timeLapse();
+        System.out.println("\nSorted array By Fabric ASC - Time : " + lapse);
+        System.out.println("--------------");
+        if(display) printTShirts(busSortedByFabricASC);
+        
+        timePerformance = new TimePerformance();
+        List<TShirt>  busSortedByFabricDESC = bus.sort(tShirts, high, (byte)1, (byte)2);
+        lapse = timePerformance.timeLapse();
+        System.out.println("\nSorted array By Fabric DESC - Time : " + lapse);
+        System.out.println("--------------");
+        if(display) printTShirts(busSortedByFabricDESC);
+        System.out.println("\n---BucketSort---\n");
     }
     
     public static List<TShirt> generateTShirts(int count) {
