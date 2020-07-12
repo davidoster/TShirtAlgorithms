@@ -45,6 +45,8 @@ public class TShirtAlgorithms {
         doBubbleSort(tShirts, display);
         doBucketSort(tShirts, high, display);
         
+        // implement 7,8 that do incremental sorting of the TShirts first by Size then by Color and then by Fabric
+        
         
     }
     
@@ -63,7 +65,7 @@ public class TShirtAlgorithms {
         
         List<TShirt> qsSortedBySizeDESC = new ArrayList<TShirt>(tShirts);
         timePerformance = new TimePerformance();
-        qsSortedBySizeASC = qs.sort(qsSortedBySizeDESC, 0, high, (byte)1, (byte)0);
+        qsSortedBySizeDESC = qs.sort(qsSortedBySizeDESC, 0, high, (byte)1, (byte)0);
         lapse = timePerformance.timeLapse();
         System.out.println("\nSorted array By Size DESC - Time: " + lapse);
         System.out.println("--------------");
@@ -220,7 +222,6 @@ public class TShirtAlgorithms {
     
     public static Object generateRandomField(int field) { // 0 = Color, 1 = Fabric, 2 = Size
         int k = generateNumber();
- 
         switch(field) {
             case 0:
                 Color c = Color.values()[k];
